@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Webhooks • RecoverAI</title>
+  <link rel="stylesheet" href="/css/app.css"/>
+  
+</head>
+
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+
+    <a class="brand" href="/">
+      <div class="brand-mark">R</div>
+      <div>
+        <div class="brand-name">RecoverAI</div>
+        <div class="brand-sub">Revenue Recovery Console</div>
+      </div>
+    </a>
+
+    <div class="nav-group">
+
+      <div class="nav-label">Workspace</div>
+
+      <a class="nav-link " href="/"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link " href="/payments.html"><span class="nav-icon">◈</span><span>Payments</span></a>
+<a class="nav-link " href="/recoveries.html"><span class="nav-icon">↻</span><span>Recovery Cases</span></a>
+<a class="nav-link active" href="/webhooks.html"><span class="nav-icon">⇄</span><span>Webhooks</span></a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <div class="nav-label">Quick Actions</div>
+
+      <a class="nav-link" href="/payments.html#create">
+        <span class="nav-icon">＋</span>
+        <span>Create Payment</span>
+      </a>
+
+      <a class="nav-link" href="/recoveries.html">
+        <span class="nav-icon">✦</span>
+        <span>Analyze with AI</span>
+      </a>
+
+    </div>
+
+    <div class="sidebar-footer">
+
+      <div class="ai-pill">
+        <span class="dot warning" data-ai-dot></span>
+        <span data-ai-label>Checking Gemini...</span>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <section class="main">
+
+    <header class="topbar">
+
+      <div class="top-left">
+
+        <button class="mobile-menu" data-mobile-menu>
+          ☰
+        </button>
+
+        <div>
+          <div class="page-title">Webhooks</div>
+          <div class="page-sub">Razorpay delivery and event processing</div>
+        </div>
+
+      </div>
+
+
+      <div class="top-actions">
+
+        <span class="badge hide-mobile">
+          <span class="dot warning" data-ai-dot></span>
+          <span data-ai-label>Checking AI...</span>
+        </span>
+
+        <a class="btn btn-primary" href="/payments.html#create">
+          ＋ Create Payment
+        </a>
+
+      </div>
+
+    </header>
+
+
+    <main class="content">
+      
+<section class="hero">
+
+  <div>
+
+    <span class="badge">
+      Signed Razorpay Events
+    </span>
+
+    <h1>
+      Observe webhook delivery and processing.
+    </h1>
+
+    <p>
+      RecoverAI verifies webhook signatures, deduplicates event IDs,
+      and updates payments, orders and recovery cases from Razorpay Test Mode events.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="grid grid-2 mt-24">
+
+  <div class="card">
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Webhook Endpoint
+        </div>
+
+        <div class="card-sub">
+          Expose through Cloudflare Tunnel
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+      <div
+        class="codebox"
+        id="localWebhook">
+      </div>
+
+
+      <div class="codebox mt-18">
+
+        cloudflared tunnel --url http://localhost:8081
+
+      </div>
+
+
+      <div class="notice mt-18">
+
+        Razorpay Test Webhook URL:
+
+        <br>
+
+        <span class="mono">
+          https://YOUR-TUNNEL.trycloudflare.com/api/v1/webhooks/razorpay
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Enabled Events
+        </div>
+
+        <div class="card-sub">
+          Used by the current RecoverAI flow
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot">A</div>
+          <div>
+            <div class="timeline-title">
+              payment.authorized
+            </div>
+            <div class="timeline-sub">
+              Marks payment AUTHORIZED and order ATTEMPTED.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">F</div>
+          <div>
+            <div class="timeline-title">
+              payment.failed
+            </div>
+            <div class="timeline-sub">
+              Creates/updates FAILED payment and opens a recovery case.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">C</div>
+          <div>
+            <div class="timeline-title">
+              payment.captured
+            </div>
+            <div class="timeline-sub">
+              Marks payment CAPTURED and order PAID.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="section-title">
+
+  <div>
+
+    <h2>
+      Webhook Events
+    </h2>
+
+    <p>
+      Recent persisted events from Razorpay
+    </p>
+
+  </div>
+
+
+  <button
+    id="refreshEvents"
+    class="btn btn-secondary btn-sm">
+
+    Refresh
+
+  </button>
+
+</div>
+
+
+<section class="card">
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Event ID</th>
+          <th>Event Type</th>
+          <th>Status</th>
+          <th>Received</th>
+          <th>Processed</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="eventsBody"></tbody>
+
+    </table>
+
+  </div>
+
+  <div id="eventsPager"></div>
+
+</section>
+
+    </main>
+
+  </section>
+
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/webhooks.js"></script>
+
+</body>
+</html>

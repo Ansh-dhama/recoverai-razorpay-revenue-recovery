@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recovery Cases • RecoverAI</title>
+  <link rel="stylesheet" href="/css/app.css"/>
+  
+</head>
+
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+
+    <a class="brand" href="/">
+      <div class="brand-mark">R</div>
+      <div>
+        <div class="brand-name">RecoverAI</div>
+        <div class="brand-sub">Revenue Recovery Console</div>
+      </div>
+    </a>
+
+    <div class="nav-group">
+
+      <div class="nav-label">Workspace</div>
+
+      <a class="nav-link " href="/"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link " href="/payments.html"><span class="nav-icon">◈</span><span>Payments</span></a>
+<a class="nav-link active" href="/recoveries.html"><span class="nav-icon">↻</span><span>Recovery Cases</span></a>
+<a class="nav-link " href="/webhooks.html"><span class="nav-icon">⇄</span><span>Webhooks</span></a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <div class="nav-label">Quick Actions</div>
+
+      <a class="nav-link" href="/payments.html#create">
+        <span class="nav-icon">＋</span>
+        <span>Create Payment</span>
+      </a>
+
+      <a class="nav-link" href="/recoveries.html">
+        <span class="nav-icon">✦</span>
+        <span>Analyze with AI</span>
+      </a>
+
+    </div>
+
+    <div class="sidebar-footer">
+
+      <div class="ai-pill">
+        <span class="dot warning" data-ai-dot></span>
+        <span data-ai-label>Checking Gemini...</span>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <section class="main">
+
+    <header class="topbar">
+
+      <div class="top-left">
+
+        <button class="mobile-menu" data-mobile-menu>
+          ☰
+        </button>
+
+        <div>
+          <div class="page-title">Recovery Cases</div>
+          <div class="page-sub">AI analysis, execution and retry orchestration</div>
+        </div>
+
+      </div>
+
+
+      <div class="top-actions">
+
+        <span class="badge hide-mobile">
+          <span class="dot warning" data-ai-dot></span>
+          <span data-ai-label>Checking AI...</span>
+        </span>
+
+        <a class="btn btn-primary" href="/payments.html#create">
+          ＋ Create Payment
+        </a>
+
+      </div>
+
+    </header>
+
+
+    <main class="content">
+      
+<section class="hero">
+
+  <div>
+
+    <span class="badge">
+      <span class="dot success"></span>
+      Gemini + deterministic fallback
+    </span>
+
+    <h1>
+      Turn failed payments into recovery actions.
+    </h1>
+
+    <p>
+      Analyze pending cases, inspect Gemini confidence and reasoning,
+      execute planned actions, schedule delayed retries,
+      and surface cases that need human review.
+    </p>
+
+  </div>
+
+
+  <button
+    id="processDueBtn"
+    class="btn btn-primary">
+
+    Process Due Retries
+
+  </button>
+
+</section>
+
+
+<div class="section-title">
+
+  <div>
+
+    <h2>
+      Recovery Cases
+    </h2>
+
+    <p>
+      Operational queue ordered by newest case
+    </p>
+
+  </div>
+
+
+  <div class="toolbar-right">
+
+    <select id="statusFilter">
+
+      <option value="">
+        All statuses
+      </option>
+
+      <option>
+        PENDING_ANALYSIS
+      </option>
+
+      <option>
+        RECOVERY_PLANNED
+      </option>
+
+      <option>
+        RECOVERY_SCHEDULED
+      </option>
+
+      <option>
+        RECOVERY_IN_PROGRESS
+      </option>
+
+      <option>
+        RECOVERED
+      </option>
+
+      <option>
+        HUMAN_REVIEW
+      </option>
+
+      <option>
+        CANCELLED
+      </option>
+
+    </select>
+
+
+    <button
+      id="refreshBtn"
+      class="btn btn-secondary btn-sm">
+
+      Refresh
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<section class="card">
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Case</th>
+          <th>Payment</th>
+          <th>Status</th>
+          <th>Recommended Action</th>
+          <th>Confidence</th>
+          <th>Attempts</th>
+          <th>Reason</th>
+          <th>Actions</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="casesBody"></tbody>
+
+    </table>
+
+  </div>
+
+  <div id="casesPager"></div>
+
+</section>
+
+    </main>
+
+  </section>
+
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/recoveries.js"></script>
+
+</body>
+</html>

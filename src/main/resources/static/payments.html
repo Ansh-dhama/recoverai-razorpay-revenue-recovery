@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payments • RecoverAI</title>
+  <link rel="stylesheet" href="/css/app.css"/>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+
+    <a class="brand" href="/">
+      <div class="brand-mark">R</div>
+      <div>
+        <div class="brand-name">RecoverAI</div>
+        <div class="brand-sub">Revenue Recovery Console</div>
+      </div>
+    </a>
+
+    <div class="nav-group">
+
+      <div class="nav-label">Workspace</div>
+
+      <a class="nav-link " href="/"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link active" href="/payments.html"><span class="nav-icon">◈</span><span>Payments</span></a>
+<a class="nav-link " href="/recoveries.html"><span class="nav-icon">↻</span><span>Recovery Cases</span></a>
+<a class="nav-link " href="/webhooks.html"><span class="nav-icon">⇄</span><span>Webhooks</span></a>
+
+    </div>
+
+    <div class="nav-group">
+
+      <div class="nav-label">Quick Actions</div>
+
+      <a class="nav-link" href="/payments.html#create">
+        <span class="nav-icon">＋</span>
+        <span>Create Payment</span>
+      </a>
+
+      <a class="nav-link" href="/recoveries.html">
+        <span class="nav-icon">✦</span>
+        <span>Analyze with AI</span>
+      </a>
+
+    </div>
+
+    <div class="sidebar-footer">
+
+      <div class="ai-pill">
+        <span class="dot warning" data-ai-dot></span>
+        <span data-ai-label>Checking Gemini...</span>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <section class="main">
+
+    <header class="topbar">
+
+      <div class="top-left">
+
+        <button class="mobile-menu" data-mobile-menu>
+          ☰
+        </button>
+
+        <div>
+          <div class="page-title">Payments</div>
+          <div class="page-sub">Create orders and inspect Razorpay attempts</div>
+        </div>
+
+      </div>
+
+
+      <div class="top-actions">
+
+        <span class="badge hide-mobile">
+          <span class="dot warning" data-ai-dot></span>
+          <span data-ai-label>Checking AI...</span>
+        </span>
+
+        <a class="btn btn-primary" href="/payments.html#create">
+          ＋ Create Payment
+        </a>
+
+      </div>
+
+    </header>
+
+
+    <main class="content">
+      
+<section class="hero" id="create">
+
+  <div>
+
+    <span class="badge">
+      Razorpay Test Checkout
+    </span>
+
+    <h1>
+      Create and test payment attempts.
+    </h1>
+
+    <p>
+      Create a Razorpay order using the backend, launch Razorpay Checkout,
+      and inspect successful or failed payment attempts directly from RecoverAI.
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="grid grid-2 mt-24">
+
+  <div class="card">
+
+    <div class="card-head">
+
+      <div>
+        <div class="card-title">
+          Create Payment Order
+        </div>
+
+        <div class="card-sub">
+          Backend → Razorpay Orders API
+        </div>
+      </div>
+
+      <span
+        id="razorpayStatus"
+        class="status warning">
+        Loading Razorpay...
+      </span>
+
+    </div>
+
+
+    <div class="card-body">
+
+      <form id="createOrderForm">
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label for="merchantOrderId">
+              Merchant Order ID
+            </label>
+
+            <input
+              id="merchantOrderId"
+              required
+            />
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="customerId">
+              Customer ID
+            </label>
+
+            <input
+              id="customerId"
+              value="CUSTOMER-1001"
+              required
+            />
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="amountRupees">
+              Amount (₹)
+            </label>
+
+            <input
+              id="amountRupees"
+              type="number"
+              min="1"
+              step="0.01"
+              value="499"
+              required
+            />
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="receipt">
+              Receipt
+            </label>
+
+            <input
+              id="receipt"
+              required
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="notice mt-18">
+
+          Razorpay Checkout configuration is loaded automatically from the backend.
+          No API key or secret needs to be entered on this page.
+
+        </div>
+
+
+        <div class="toolbar mt-18">
+
+          <div class="toolbar-left">
+
+            <button
+              id="createBtn"
+              class="btn btn-primary"
+              type="submit">
+
+              Create Order
+
+            </button>
+
+
+            <button
+              id="checkoutBtn"
+              class="btn btn-success"
+              type="button"
+              disabled>
+
+              Open Checkout
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+
+      <div
+        id="createResult"
+        class="codebox mt-18">
+
+        No order created yet.
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-head">
+
+      <div>
+
+        <div class="card-title">
+          Payment Recovery Flow
+        </div>
+
+        <div class="card-sub">
+          Razorpay → RecoverAI
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div>
+            <div class="timeline-title">
+              Create Razorpay Order
+            </div>
+            <div class="timeline-sub">
+              Backend securely creates the order.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div>
+            <div class="timeline-title">
+              Launch Checkout
+            </div>
+            <div class="timeline-sub">
+              Browser receives only public checkout configuration.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div>
+            <div class="timeline-title">
+              Receive Razorpay Webhook
+            </div>
+            <div class="timeline-sub">
+              payment.failed or payment.captured reaches the backend.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div>
+            <div class="timeline-title">
+              Create Recovery Case
+            </div>
+            <div class="timeline-sub">
+              Failed payments enter the AI recovery pipeline.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div
+        id="checkoutResult"
+        class="codebox mt-18">
+
+        Checkout result appears here.
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="section-title">
+
+  <div>
+
+    <h2>
+      Payment Orders
+    </h2>
+
+    <p>
+      Latest orders stored in MySQL
+    </p>
+
+  </div>
+
+
+  <button
+    id="refreshOrders"
+    class="btn btn-secondary btn-sm">
+
+    Refresh
+
+  </button>
+
+</div>
+
+
+<section class="card">
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>ID</th>
+          <th>Merchant Order</th>
+          <th>Razorpay Order</th>
+          <th>Customer</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Attempts</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="ordersBody"></tbody>
+
+    </table>
+
+  </div>
+
+  <div id="ordersPager"></div>
+
+</section>
+
+
+<div class="section-title">
+
+  <div>
+
+    <h2>
+      Payments
+    </h2>
+
+    <p>
+      All payment attempts and failure metadata
+    </p>
+
+  </div>
+
+
+  <button
+    id="refreshPayments"
+    class="btn btn-secondary btn-sm">
+
+    Refresh
+
+  </button>
+
+</div>
+
+
+<section class="card">
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>ID</th>
+          <th>Razorpay Payment</th>
+          <th>Order</th>
+          <th>Method</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Failure</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="paymentsBody"></tbody>
+
+    </table>
+
+  </div>
+
+  <div id="paymentsPager"></div>
+
+</section>
+
+    </main>
+
+  </section>
+
+</div>
+
+<script src="/js/app.js"></script>
+<script src="/js/payments.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8"/>
+
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"/>
+
+  <title>
+    Dashboard • RecoverAI
+  </title>
+
+  <link
+          rel="stylesheet"
+          href="/css/app.css"/>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+  <!-- ===================================================== -->
+  <!-- SIDEBAR -->
+  <!-- ===================================================== -->
+
+  <aside class="sidebar">
+
+
+    <a
+            class="brand"
+            href="/">
+
+      <div class="brand-mark">
+        R
+      </div>
+
+
+      <div>
+
+        <div class="brand-name">
+          RecoverAI
+        </div>
+
+        <div class="brand-sub">
+          Revenue Recovery Console
+        </div>
+
+      </div>
+
+    </a>
+
+
+
+    <div class="nav-group">
+
+      <div class="nav-label">
+        Workspace
+      </div>
+
+
+      <a
+              class="nav-link active"
+              href="/">
+
+        <span class="nav-icon">
+          ⌂
+        </span>
+
+        <span>
+          Dashboard
+        </span>
+
+      </a>
+
+
+      <a
+              class="nav-link"
+              href="/payments.html">
+
+        <span class="nav-icon">
+          ◈
+        </span>
+
+        <span>
+          Payments
+        </span>
+
+      </a>
+
+
+      <a
+              class="nav-link"
+              href="/recoveries.html">
+
+        <span class="nav-icon">
+          ↻
+        </span>
+
+        <span>
+          Recovery Cases
+        </span>
+
+      </a>
+
+
+      <a
+              class="nav-link"
+              href="/webhooks.html">
+
+        <span class="nav-icon">
+          ⇄
+        </span>
+
+        <span>
+          Webhooks
+        </span>
+
+      </a>
+
+    </div>
+
+
+
+    <div class="nav-group">
+
+      <div class="nav-label">
+        Quick Actions
+      </div>
+
+
+      <a
+              class="nav-link"
+              href="/payments.html#create">
+
+        <span class="nav-icon">
+          ＋
+        </span>
+
+        <span>
+          Create Payment
+        </span>
+
+      </a>
+
+
+      <a
+              class="nav-link"
+              href="/recoveries.html">
+
+        <span class="nav-icon">
+          ✦
+        </span>
+
+        <span>
+          Analyze with AI
+        </span>
+
+      </a>
+
+
+      <a
+              class="nav-link"
+              href="#buildathon">
+
+        <span class="nav-icon">
+          ◫
+        </span>
+
+        <span>
+          Buildathon Simulation
+        </span>
+
+      </a>
+
+    </div>
+
+
+
+    <div class="sidebar-footer">
+
+      <div class="ai-pill">
+
+        <span
+                class="dot warning"
+                data-ai-dot>
+        </span>
+
+        <span data-ai-label>
+          Checking Gemini...
+        </span>
+
+      </div>
+
+    </div>
+
+
+  </aside>
+
+
+
+  <!-- ===================================================== -->
+  <!-- MAIN -->
+  <!-- ===================================================== -->
+
+  <section class="main">
+
+
+    <!-- =================================================== -->
+    <!-- TOP BAR -->
+    <!-- =================================================== -->
+
+    <header class="topbar">
+
+
+      <div class="top-left">
+
+
+        <button
+                class="mobile-menu"
+                data-mobile-menu>
+
+          ☰
+
+        </button>
+
+
+        <div>
+
+          <div class="page-title">
+            Dashboard
+          </div>
+
+          <div class="page-sub">
+            Live overview of payment recovery operations
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="top-actions">
+
+
+        <span class="badge hide-mobile">
+
+          <span
+                  class="dot warning"
+                  data-ai-dot>
+          </span>
+
+          <span data-ai-label>
+            Checking AI...
+          </span>
+
+        </span>
+
+
+        <a
+                class="btn btn-primary"
+                href="/payments.html#create">
+
+          ＋ Create Payment
+
+        </a>
+
+
+      </div>
+
+
+    </header>
+
+
+
+    <!-- =================================================== -->
+    <!-- CONTENT -->
+    <!-- =================================================== -->
+
+    <main class="content">
+
+
+      <!-- ================================================= -->
+      <!-- HERO -->
+      <!-- ================================================= -->
+
+      <section class="hero">
+
+
+        <div>
+
+
+          <span class="badge">
+
+            <span class="dot success">
+            </span>
+
+            Intelligent payment recovery
+
+          </span>
+
+
+          <h1>
+            Recover failed revenue with AI-assisted decisions.
+          </h1>
+
+
+          <p>
+
+            Monitor Razorpay payment failures, generate recovery actions with Gemini,
+            fall back to deterministic rules, schedule retries, and demonstrate
+            measurable recovery outcomes through the Buildathon simulation layer.
+
+          </p>
+
+
+          <div class="stat-strip">
+
+            <span class="stat-chip">
+              Razorpay Webhooks
+            </span>
+
+            <span class="stat-chip">
+              Gemini AI
+            </span>
+
+            <span class="stat-chip">
+              Rule Fallback
+            </span>
+
+            <span class="stat-chip">
+              Retry Scheduler
+            </span>
+
+            <span class="stat-chip">
+              Batch Simulation
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+        <a
+                class="btn btn-primary"
+                href="/recoveries.html">
+
+          Open Recovery Console →
+
+        </a>
+
+
+      </section>
+
+
+
+      <!-- ================================================= -->
+      <!-- LIVE DASHBOARD METRICS -->
+      <!-- ================================================= -->
+
+      <section class="grid grid-4 mt-24">
+
+
+        <div class="card metric">
+
+          <div class="metric-top">
+
+            <div>
+
+              <div class="metric-label">
+                Total Orders
+              </div>
+
+              <div
+                      id="mTotalOrders"
+                      class="metric-value">
+
+                —
+
+              </div>
+
+            </div>
+
+
+            <div class="metric-icon">
+              ◈
+            </div>
+
+          </div>
+
+          <div class="metric-foot">
+            All Razorpay orders created
+          </div>
+
+        </div>
+
+
+
+        <div class="card metric">
+
+          <div class="metric-top">
+
+            <div>
+
+              <div class="metric-label">
+                Failed Payments
+              </div>
+
+              <div
+                      id="mFailedPayments"
+                      class="metric-value">
+
+                —
+
+              </div>
+
+            </div>
+
+
+            <div class="metric-icon">
+              !
+            </div>
+
+          </div>
+
+          <div class="metric-foot">
+            Payments requiring attention
+          </div>
+
+        </div>
+
+
+
+        <div class="card metric">
+
+          <div class="metric-top">
+
+            <div>
+
+              <div class="metric-label">
+                Recovery Cases
+              </div>
+
+              <div
+                      id="mRecoveryCases"
+                      class="metric-value">
+
+                —
+
+              </div>
+
+            </div>
+
+
+            <div class="metric-icon">
+              ↻
+            </div>
+
+          </div>
+
+          <div class="metric-foot">
+            AI / rule-driven cases
+          </div>
+
+        </div>
+
+
+
+        <div class="card metric">
+
+          <div class="metric-top">
+
+            <div>
+
+              <div class="metric-label">
+                Recovered
+              </div>
+
+              <div
+                      id="mRecovered"
+                      class="metric-value">
+
+                —
+
+              </div>
+
+            </div>
+
+
+            <div class="metric-icon">
+              ✓
+            </div>
+
+          </div>
+
+          <div class="metric-foot">
+            Successfully recovered cases
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ================================================= -->
+      <!-- PIPELINE + RECOVERY RATE -->
+      <!-- ================================================= -->
+
+      <section class="grid grid-2 mt-18">
+
+
+        <div class="card">
+
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Recovery Pipeline
+              </div>
+
+              <div class="card-sub">
+                Current real recovery case distribution
+              </div>
+
+            </div>
+
+
+            <a
+                    class="btn btn-secondary btn-sm"
+                    href="/recoveries.html">
+
+              View all
+
+            </a>
+
+          </div>
+
+
+          <div class="card-body">
+
+
+            <div class="timeline">
+
+
+              <div class="timeline-item">
+
+                <div class="timeline-dot">
+                  1
+                </div>
+
+                <div>
+
+                  <div class="timeline-title">
+                    Pending AI Analysis:
+                    <span id="pPending">
+                      —
+                    </span>
+                  </div>
+
+                  <div class="timeline-sub">
+                    Fresh failed payments waiting for analysis.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="timeline-item">
+
+                <div class="timeline-dot">
+                  2
+                </div>
+
+                <div>
+
+                  <div class="timeline-title">
+                    Recovery Planned:
+                    <span id="pPlanned">
+                      —
+                    </span>
+                  </div>
+
+                  <div class="timeline-sub">
+                    Gemini or rules selected an action.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="timeline-item">
+
+                <div class="timeline-dot">
+                  3
+                </div>
+
+                <div>
+
+                  <div class="timeline-title">
+                    Scheduled:
+                    <span id="pScheduled">
+                      —
+                    </span>
+                  </div>
+
+                  <div class="timeline-sub">
+                    Delayed retries waiting for scheduler execution.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div class="timeline-item">
+
+                <div class="timeline-dot">
+                  4
+                </div>
+
+                <div>
+
+                  <div class="timeline-title">
+                    Human Review:
+                    <span id="pHuman">
+                      —
+                    </span>
+                  </div>
+
+                  <div class="timeline-sub">
+                    Cases requiring manual intervention.
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="card">
+
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="card-title">
+                Real Recovery Efficiency
+              </div>
+
+              <div class="card-sub">
+                Recovered cases stored in MySQL
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="card-body">
+
+
+            <div
+                    style="
+                  display:flex;
+                  justify-content:space-between;
+                  align-items:end;
+                  gap:18px;
+                ">
+
+
+              <div>
+
+                <div class="metric-label">
+                  Recovered / Total Cases
+                </div>
+
+                <div
+                        id="recoveryRate"
+                        class="metric-value">
+
+                  0%
+
+                </div>
+
+              </div>
+
+
+              <span
+                      id="recoveryRateText"
+                      class="badge">
+
+                No data
+
+              </span>
+
+
+            </div>
+
+
+            <div class="progress mt-18">
+
+              <span
+                      id="recoveryRateBar"
+                      style="width:0%">
+              </span>
+
+            </div>
+
+
+            <p
+                    class="muted small"
+                    style="margin-top:14px">
+
+              This section uses actual database recovery cases.
+              Buildathon simulation metrics are shown separately below.
+
+            </p>
+
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ================================================= -->
+      <!-- BUILDATHON PHASE 9 -->
+      <!-- ================================================= -->
+
+      <div
+              class="section-title"
+              id="buildathon">
+
+
+        <div>
+
+          <h2>
+            Buildathon Recovery Simulation
+          </h2>
+
+          <p>
+            Synthetic batch metrics for demonstrating recovery at scale
+          </p>
+
+        </div>
+
+
+        <span
+                id="simulationModeBadge"
+                class="status neutral">
+
+          Not run yet
+
+        </span>
+
+
+      </div>
+
+
+
+      <section class="card">
+
+
+        <div class="card-head">
+
+
+          <div>
+
+            <div class="card-title">
+              Phase 9 — Recovery Metrics & Batch Simulation
+            </div>
+
+            <div class="card-sub">
+              POST /api/v1/buildathon/simulate
+            </div>
+
+          </div>
+
+
+          <div class="toolbar-right">
+
+
+            <button
+                    id="runFastSimulationBtn"
+                    class="btn btn-primary">
+
+              Run 100-Case Simulation
+
+            </button>
+
+
+            <button
+                    id="runLiveAiSimulationBtn"
+                    class="btn btn-secondary">
+
+              Run 1 Live AI Case
+
+            </button>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="card-body">
+
+
+          <div class="notice">
+
+            <strong>Important:</strong>
+
+            FAST_SIMULATION uses synthetic failures and deterministic recovery logic
+            to demonstrate batch-scale metrics.
+
+            LIVE_AI sends real requests through the Gemini hybrid decision engine.
+            If Gemini quota is exhausted, RecoverAI automatically falls back to rules.
+
+          </div>
+
+
+          <section class="grid grid-4 mt-18">
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                Revenue At Risk
+              </div>
+
+              <div
+                      id="simRevenueAtRisk"
+                      class="metric-value">
+
+                ₹0
+
+              </div>
+
+              <div class="metric-foot">
+                Synthetic batch value
+              </div>
+
+            </div>
+
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                Revenue Recovered
+              </div>
+
+              <div
+                      id="simRevenueRecovered"
+                      class="metric-value">
+
+                ₹0
+
+              </div>
+
+              <div class="metric-foot">
+                Simulated recovered value
+              </div>
+
+            </div>
+
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                Recovery Rate
+              </div>
+
+              <div
+                      id="simRecoveryRate"
+                      class="metric-value">
+
+                0%
+
+              </div>
+
+              <div class="metric-foot">
+                Recovered revenue / risk
+              </div>
+
+            </div>
+
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                Recovered Cases
+              </div>
+
+              <div
+                      id="simRecoveredCases"
+                      class="metric-value">
+
+                0
+
+              </div>
+
+              <div
+                      id="simBatchSizeText"
+                      class="metric-foot">
+
+                No simulation yet
+
+              </div>
+
+            </div>
+
+
+          </section>
+
+
+
+          <section class="grid grid-4 mt-18">
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                AI Decisions
+              </div>
+
+              <div
+                      id="simAiDecisions"
+                      class="metric-value">
+
+                0
+
+              </div>
+
+              <div class="metric-foot">
+                Real Gemini decisions in LIVE_AI
+              </div>
+
+            </div>
+
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                Rule Fallbacks
+              </div>
+
+              <div
+                      id="simRuleFallbacks"
+                      class="metric-value">
+
+                0
+
+              </div>
+
+              <div class="metric-foot">
+                Deterministic recovery decisions
+              </div>
+
+            </div>
+
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                Human Reviews
+              </div>
+
+              <div
+                      id="simHumanReviews"
+                      class="metric-value">
+
+                0
+
+              </div>
+
+              <div class="metric-foot">
+                Cases escalated to humans
+              </div>
+
+            </div>
+
+
+
+            <div class="card metric">
+
+              <div class="metric-label">
+                Retries Stopped
+              </div>
+
+              <div
+                      id="simRetriesStopped"
+                      class="metric-value">
+
+                0
+
+              </div>
+
+              <div class="metric-foot">
+                Retry-limit protection
+              </div>
+
+            </div>
+
+
+          </section>
+
+
+
+          <div class="mt-18">
+
+
+            <div class="toolbar">
+
+              <div>
+
+                <div class="card-title">
+                  Simulation Progress
+                </div>
+
+                <div
+                        id="simulationSummary"
+                        class="card-sub">
+
+                  Run a simulation to see results.
+
+                </div>
+
+              </div>
+
+
+              <span
+                      id="simulationSeed"
+                      class="badge">
+
+                Seed: —
+
+              </span>
+
+
+            </div>
+
+
+            <div class="progress mt-18">
+
+              <span
+                      id="simulationRecoveryBar"
+                      style="width:0%">
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ================================================= -->
+      <!-- SAMPLE CASES -->
+      <!-- ================================================= -->
+
+      <div class="section-title">
+
+
+        <div>
+
+          <h2>
+            Simulation Sample Cases
+          </h2>
+
+          <p>
+            First cases returned by the latest Phase 9 run
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+
+      <section class="card">
+
+
+        <div class="table-wrap">
+
+
+          <table>
+
+
+            <thead>
+
+            <tr>
+              <th>Case</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Failure</th>
+              <th>Previous Attempts</th>
+              <th>Recommended Action</th>
+              <th>Confidence</th>
+              <th>Source</th>
+              <th>Outcome</th>
+            </tr>
+
+            </thead>
+
+
+            <tbody id="simulationCasesBody">
+
+            <tr>
+
+              <td
+                      colspan="9"
+                      class="table-empty">
+
+                Run a simulation to view sample cases.
+
+              </td>
+
+            </tr>
+
+            </tbody>
+
+
+          </table>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ================================================= -->
+      <!-- RECENT PAYMENTS -->
+      <!-- ================================================= -->
+
+      <div class="section-title">
+
+
+        <div>
+
+          <h2>
+            Recent Payments
+          </h2>
+
+          <p>
+            Latest real Razorpay payment attempts
+          </p>
+
+        </div>
+
+
+        <a
+                class="btn btn-secondary btn-sm"
+                href="/payments.html">
+
+          See payments
+
+        </a>
+
+
+      </div>
+
+
+
+      <section class="card">
+
+
+        <div class="table-wrap">
+
+
+          <table>
+
+
+            <thead>
+
+            <tr>
+              <th>ID</th>
+              <th>Payment</th>
+              <th>Method</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Failure</th>
+            </tr>
+
+            </thead>
+
+
+            <tbody id="recentPayments"></tbody>
+
+
+          </table>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- ================================================= -->
+      <!-- RECENT RECOVERIES -->
+      <!-- ================================================= -->
+
+      <div class="section-title">
+
+
+        <div>
+
+          <h2>
+            Recent Recovery Cases
+          </h2>
+
+          <p>
+            Real recovery decisions and current state
+          </p>
+
+        </div>
+
+
+        <a
+                class="btn btn-secondary btn-sm"
+                href="/recoveries.html">
+
+          See recoveries
+
+        </a>
+
+
+      </div>
+
+
+
+      <section class="card">
+
+
+        <div class="table-wrap">
+
+
+          <table>
+
+
+            <thead>
+
+            <tr>
+              <th>Case</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th>Action</th>
+              <th>Confidence</th>
+              <th>Reason</th>
+            </tr>
+
+            </thead>
+
+
+            <tbody id="recentRecoveries"></tbody>
+
+
+          </table>
+
+
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+  </section>
+
+
+</div>
+
+
+
+<script src="/js/app.js">
+</script>
+
+<script src="/js/dashboard.js">
+</script>
+
+
+</body>
+
+</html>
